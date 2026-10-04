@@ -3,34 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test Page</title>
-  <style>
-    body {
-      font-family: system-ui, sans-serif;
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 0 16px;
-      line-height: 1.6;
-    }
-    button {
-      padding: 8px 16px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-  </style>
+  <title>GOODS SHOP</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <h1>테스트 페이지</h1>
-  <p>간단한 테스트용 index.html입니다.</p>
-  <button id="btn">클릭</button>
-  <p id="count">클릭 수: 0</p>
+  <nav id="nav"></nav>
+  <main>
+    <h1>굿즈 상품</h1>
+    <div id="products" class="products"></div>
 
-  <script>
-    let count = 0;
-    document.getElementById('btn').addEventListener('click', () => {
-      count++;
-      document.getElementById('count').textContent = `클릭 수: ${count}`;
-    });
-  </script>
+    <section id="checkout" class="box" hidden>
+      <div class="checkout-head">
+        <h2 id="checkout-title"></h2>
+        <strong id="checkout-price"></strong>
+      </div>
+      <div id="payment-method"></div>
+      <div id="agreement"></div>
+      <div class="checkout-actions">
+        <button id="cancel" class="secondary">취소</button>
+        <button id="pay">결제하기</button>
+      </div>
+      <p id="message" class="message"></p>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://js.tosspayments.com/v2/standard"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/index.js"></script>
 </body>
 </html>

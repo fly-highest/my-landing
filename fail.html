@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>결제 실패 - GOODS SHOP</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav id="nav"></nav>
+  <main>
+    <div class="box narrow">
+      <h1>결제 실패</h1>
+      <p id="message" class="message"></p>
+      <a href="index.html">상품으로 돌아가기</a>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/common.js"></script>
+  <script>
+    // 토스가 알려준 실패 사유를 보여주고, 주문을 '결제실패'로 표시
+    const params = new URLSearchParams(location.search);
+    document.getElementById('message').textContent = params.get('message') || '결제가 취소되었습니다.';
+    if (params.get('orderId')) {
+      sb.functions.invoke('confirm-payment', { body: { orderId: params.get('orderId'), fail: true } });
+    }
+  </script>
+</body>
+</html>
